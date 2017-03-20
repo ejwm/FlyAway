@@ -1,0 +1,45 @@
+<!doctype html>
+<title>
+	Welcome to Fly Away
+</title>
+
+<head>
+	<style>
+		body {
+			background-image: url("http://img.clipartall.com/world-map-for-wall-free-images-at-clker-com-vector-clip-art-online-world-map-clipart-4200_2085.png");
+			background-size: cover;
+			background-repeat: no-repeat;
+	}
+	</style>
+</head>
+
+<h1> Welcome To Fly Away</h1>
+
+<div id="info">
+
+	<h3><u>Flight Information</u></h3>
+	<p><b>From: </b>{{ results['Places'][0]['CityName']}}, {{ results['Places'][0]['CountryName']}}</p>
+	
+	<p><b>Airport: </b>{{ results['Places'][0]['Name']}} ({{ results['Places'][0]['SkyscannerCode']}})</p>
+
+	<p><b>To: </b>{{ results['Places'][1]['CityName']}}, {{ results['Places'][1]['CountryName']}}</p>
+	
+	<p><b>Airport: </b>{{ results['Places'][1]['Name']}} ({{ results['Places'][1]['SkyscannerCode']}})</p>
+
+	<h3><u>Outbound Quote 1</u></h3>
+	<p><b>Departure Date: </b>{{ results['Quotes'][0]['OutboundLeg']['DepartureDate']}}</p>
+	<p><b>Price: </b>£{{ results['Quotes'][0]['MinPrice']}}</p>
+	
+	<h3><u>Outbound Quote 2</u></h3>
+	<p><b>Departure Date: </b>{{ results['Quotes'][1]['OutboundLeg']['DepartureDate']}}
+	<p><b>Price: </b>£{{ results['Quotes'][1]['MinPrice']}}</p>
+	
+	<h3><u>Outbound Quote 3</u></h3>
+	<p><b>Departure Date: </b>{{ results['Quotes'][2]['OutboundLeg']['DepartureDate']}}
+	<p><b>Price: </b>£{{ results['Quotes'][2]['MinPrice']}}</p>
+
+	<h3><u>Inbound Quote 1</u></h3>
+	<p><b>Departure Date: </b>{{ results['Quotes'][3]['InboundLeg']['DepartureDate']}}
+	<p><b>Price: </b>£{{ results['Quotes'][3]['MinPrice']}}</p>
+
+</div>

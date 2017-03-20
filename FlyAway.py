@@ -12,9 +12,14 @@ app = Flask("MyApp")
 @app.route("/")
 def get_data():
 	return render_template('Fly.html')
-	return requests.post('http://partners.api.skyscanner.net/apiservices/pricing/v1.0').content
-	flights_cache_service = FlightsCache('<apikey>')
+
+@app.route("/query", methods=['POST'])
+def query_handler():
+
+	# api_query = requests.post('http://partners.api.skyscanner.net/apiservices/pricing/v1.0').content
+	flights_cache_service = FlightsCache(apikey)
 	result = flights_cache_service.get_cheapest_quotes(
+    	market='UK',
     	country='UK',
     	currency='GBP',
     	locale='en-GB',
@@ -23,14 +28,12 @@ def get_data():
     	outbounddate='2017-05-28',
     	inbounddate='2017-05-31',
     	adults=1).parsed
-	return requests.get('http://partners.api.skyscanner.net/apiservices/pricing/v1.0/{my_id}?apiKey={apikey}').content
-	form_data = requests.form
-	print form_data['name']
-	return "All OK"
+	# return requests.get('http://partners.api.skyscanner.net/apiservices/pricing/v1.0/{my_id}?apiKey={apikey}').content
+	# form_data = requests.form
+	# print form_data['name']
+	# requests.form()
+	return render_template("results.html", results=result)
 
-@app.route("/flightresult")
-def post_data():
-	return 
 
 
 app.run(debug=True)
